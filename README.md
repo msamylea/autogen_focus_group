@@ -1,4 +1,10 @@
-# autogen_focus_group
+
+###AutoGen Virtual Focus Group
+
+
+![virtual_group](https://github.com/msamylea/autogen_focus_group/assets/44280406/e44684e1-96a4-475d-a432-4e4aaae24c7a)
+
+
 Virtual focus group with multiple custom personas, product details, and final analysis created with AutoGen, Ollama/Llama3, and Streamlit. 
 
 Uses custom GroupChat and custom GroupChatManager to output the content to Streamlit in an organized, clean chat by removing blank messages and formatting content to use sender name.
