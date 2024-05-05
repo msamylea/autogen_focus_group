@@ -121,7 +121,7 @@ def main():
     ):
             launch_focus_group = st.button("Launch Focus Group", key="launch_focus_group")
             if launch_focus_group:
-                st.switch_page("pages/Run_Virtual_Focus_Group.py")
+                st.switch_page("pages/1 Run_Virtual_Focus_Group.py")
 
 if __name__ == "__main__":
     main()
