@@ -1,5 +1,5 @@
 
-###AutoGen Virtual Focus Group
+# AutoGen Virtual Focus Group
 
 
 ![virtual_group](https://github.com/msamylea/autogen_focus_group/assets/44280406/e44684e1-96a4-475d-a432-4e4aaae24c7a)
