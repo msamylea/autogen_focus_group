@@ -1,0 +1,19 @@
+{
+    "Persona 1": {
+              "Name": "Diana",
+        "Age": "25-34",
+        "Gender": "female",
+        "Location": "West US",
+        "Education": "Masters Degree",
+        "Employment": "Employed",
+        "Income": "200k+",
+        "Marital Status": "Single",
+        "Children": "0",
+        "Occupation": "Technical",
+        "Hobbies": [
+            "Games",
+            "Exercise",
+            "Traveling"
+        ],
+        "Backstory": "Highly opinionated and well educated.  Very well spoken. Wants to know all the technical details of products and doesn't shy away from demanding more information when she feels like the advertising is false or misleading."
+    },
