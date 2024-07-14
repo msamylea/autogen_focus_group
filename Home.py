@@ -27,7 +27,7 @@ def save_personas(personas):
     for i, persona in enumerate(personas):
         persona_name = f"Persona {i + 1}"
         persona_data[persona_name] = persona
-    with open('personas.json', 'w') as file:
+    with open('docs/personas.json', 'w') as file:
         json.dump(persona_data, file, indent=4)
 
     
