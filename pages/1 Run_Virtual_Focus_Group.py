@@ -11,19 +11,21 @@ from autogen import AssistantAgent, UserProxyAgent, Agent
 import persona_handler as ph
 import random
 
+import config as cfg
+
 with open('./docs/personas.json', 'r') as f:
     personas = json.load(f)
 
 llm_config={
             "config_list": [
                 {
-                    "model": "l3custom", 
+                    "model": cfg.llama_model,
                     "api_key": "ollama", 
                     "base_url": "http://localhost:11434/v1",
                     "max_tokens": 8192, 
                 }
             ],
-            "cache_seed": None 
+            "cache_seed": None,
         }
 
 # setup page title and description
@@ -33,7 +35,6 @@ with stylable_container(
         css_styles="""
             {
                 border: 2px solid rgba(49, 51, 63, 0.2);
-                background: offwhite;
                 border-radius: 0.5rem;
                 padding: calc(1em - 1px);
                 box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
@@ -41,8 +42,8 @@ with stylable_container(
             """,
     ):
 
-    st.markdown("<h4 style='text-align: center; color: black;'>To begin, describe your product in detail and explain the type of feedback you are looking for from the group.</h4>", unsafe_allow_html=True)
-    st.markdown("<h6 style='text-align: center; color: black;'>The focus group will consist of a moderator and a group of personas. The moderator will guide the discussion, while the personas will provide feedback based on their unique characteristics and perspectives.</h6>", unsafe_allow_html=True)
+    st.markdown("<h4 style='text-align: center; '>To begin, describe your product in detail and explain the type of feedback you are looking for from the group.</h4>", unsafe_allow_html=True)
+    st.markdown("<h6 style='text-align: center; '>The focus group will consist of a moderator and a group of personas. The moderator will guide the discussion, while the personas will provide feedback based on their unique characteristics and perspectives.</h6>", unsafe_allow_html=True)
 
 class CustomGroupChatManager(autogen.GroupChatManager):
     def _process_received_message(self, message, sender, silent):
@@ -52,7 +53,6 @@ class CustomGroupChatManager(autogen.GroupChatManager):
             css_styles="""
                 {
                     border: 1px solid rgba(49, 51, 63, 0.2);
-                    background: #e6ffff;
                     border-radius: 0.5rem;
                     padding: calc(1em - 1px);
                     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
@@ -135,6 +135,7 @@ user_proxy = UserProxyAgent(
     max_consecutive_auto_reply=5,
     default_auto_reply="Reply `TERMINATE` if the task is done.",
     is_termination_msg=lambda x: True if "TERMINATE" in x.get("content") else False,
+    code_execution_config={"use_docker":False}
 )
 
 
@@ -147,7 +148,6 @@ with stylable_container(
         css_styles="""
             {
                 border: 2px solid rgba(49, 51, 63, 0.2);
-                background: offwhite;
                 border-radius: 0.5rem;
                 padding: calc(1em - 1px);
                 box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
@@ -160,8 +160,6 @@ with stylable_container(
             key="green_button",
             css_styles="""
                 button {
-                    background-color: teal;
-                    color: white;
                     box-shadow: 2px 0 7px 0 grey;
                 }
                 """,
@@ -173,13 +171,13 @@ with stylable_container(
             llm_config={
                 "config_list": [
                     {
-                        "model": "l3custom", 
+                        "model": cfg.llama_model,
                         "api_key": "ollama", 
                         "base_url": "http://localhost:11434/v1",
                         "max_tokens": 8192, 
                     }
                 ],
-                "cache_seed": None 
+                "cache_seed": None,
             }
 
         
